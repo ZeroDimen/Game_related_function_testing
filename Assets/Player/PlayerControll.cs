@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerControll : MonoBehaviour {
 
 	public float movePower = 5f;
 	public float jumpPower = 5f;
+	
 
 	Rigidbody2D rigid;
 
@@ -41,10 +42,12 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetAxisRaw ("Horizontal") < 0) {
 			moveVelocity = Vector3.left;
+			transform.localScale = new Vector3(-1, 1, 1); // 왼쪽 바라보기
 		}
 			
 		else if(Input.GetAxisRaw ("Horizontal") > 0){
 			moveVelocity = Vector3.right;
+			transform.localScale = new Vector3(1, 1, 1); // 오른쪽 바라보기
 		}	
 
 		transform.position += moveVelocity * movePower * Time.deltaTime;
